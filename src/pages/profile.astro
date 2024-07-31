@@ -1,0 +1,69 @@
+---
+import PasskeyList from "../components/PasskeyList.astro";
+---
+
+<html>
+  <head>
+    <title>Profile</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@corbado/web-js@latest/dist/bundle/index.css"
+    />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
+    <script src="https://unpkg.com/@corbado/web-js@latest/dist/bundle/index.js"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Profile</h1>
+      <div id="profile-content"></div>
+      <PasskeyList />
+      <button id="logout-button" style="display: none;">Logout</button>
+    </div>
+    <script type="module">
+      const initializeProfile = async () => {
+        await Corbado.load({
+          projectId: "YOUR_PROJECT_ID",
+        });
+
+        const user = Corbado.user;
+        const profileContent = document.getElementById("profile-content");
+        const logoutButton = document.getElementById("logout-button");
+
+        if (user) {
+          profileContent.innerHTML = `<p>Welcome, ${user.email}</p>`;
+          logoutButton.style.display = "block";
+          logoutButton.addEventListener("click", () => {
+            Corbado.logout();
+            window.location.href = "/login";
+          });
+        } else {
+          profileContent.innerHTML =
+            '<p>Please <a href="/login">login</a> to view your profile.</p>';
+        }
+      };
+
+      initializeProfile();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+---
+
+---
+
+<html>
+  <head>
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@corbado/web-js@latest/dist/bundle/index.css"
+    />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        text-align: center;
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
+    <script src="https://unpkg.com/@corbado/web-js@latest/dist/bundle/index.js"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="corbado-auth"></div>
+    </div>
+    <script type="module">
+      const initializeCorbado = async () => {
+        await Corbado.load({
+          projectId: "YOUR_PROJECT_ID",
+        });
+
+        const authElement = document.getElementById("corbado-auth");
+        Corbado.mountAuthUI(authElement, {
+          onLoggedIn: () => {
+            window.location.href = "/profile";
+          },
+        });
+      };
+
+      initializeCorbado();
+    </script>
+  </body>
+</html>

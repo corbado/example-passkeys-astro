@@ -10,6 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@corbado/web-js": "^2.9.0",
     "astro": "^4.12.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
   }
 }
