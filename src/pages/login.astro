@@ -35,13 +35,14 @@
   </head>
   <body>
     <div class="container">
+      <h1>Login or Signup</h1>
       <div id="corbado-auth"></div>
     </div>
     <script type="module">
+      import { loadCorbadoProject } from "./corbadoSetup.js";
+
       const initializeCorbado = async () => {
-        await Corbado.load({
-          projectId: "YOUR_PROJECT_ID",
-        });
+        await loadCorbadoProject();
 
         const authElement = document.getElementById("corbado-auth");
         Corbado.mountAuthUI(authElement, {

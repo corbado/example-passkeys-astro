@@ -41,10 +41,10 @@ import PasskeyList from "../components/PasskeyList.astro";
       <button id="logout-button" style="display: none;">Logout</button>
     </div>
     <script type="module">
+      import { loadCorbadoProject } from "./corbadoSetup.js";
+
       const initializeProfile = async () => {
-        await Corbado.load({
-          projectId: "YOUR_PROJECT_ID",
-        });
+        await loadCorbadoProject();
 
         const user = Corbado.user;
         const profileContent = document.getElementById("profile-content");

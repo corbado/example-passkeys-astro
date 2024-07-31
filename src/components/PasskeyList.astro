@@ -1,13 +1,9 @@
----
-
----
-
 <div id="passkey-list"></div>
 <script type="module">
+  import { loadCorbadoProject } from "./corbadoSetup.js";
+
   const initializePasskeyList = async () => {
-    await Corbado.load({
-      projectId: "YOUR_PROJECT_ID",
-    });
+    await loadCorbadoProject();
 
     const passkeyListElement = document.getElementById("passkey-list");
     if (Corbado.user) {
