@@ -1,5 +1,6 @@
 ---
 import PasskeyList from "../components/PasskeyList.astro";
+const projectId = import.meta.env.PUBLIC_CORBADO_PROJECT_ID;
 ---
 
 <html>
@@ -40,8 +41,12 @@ import PasskeyList from "../components/PasskeyList.astro";
       <PasskeyList />
       <button id="logout-button" style="display: none;">Logout</button>
     </div>
-    <script type="module">
-      import { loadCorbadoProject } from "./corbadoSetup.js";
+    <script type="module" define:vars={{ projectId }}>
+      const loadCorbadoProject = async () => {
+        await Corbado.load({
+          projectId: projectId,
+        });
+      };
 
       const initializeProfile = async () => {
         await loadCorbadoProject();
@@ -55,11 +60,11 @@ import PasskeyList from "../components/PasskeyList.astro";
           logoutButton.style.display = "block";
           logoutButton.addEventListener("click", () => {
             Corbado.logout();
-            window.location.href = "/login";
+            window.location.href = "/";
           });
         } else {
           profileContent.innerHTML =
-            '<p>Please <a href="/login">login</a> to view your profile.</p>';
+            '<p>Please <a href="/">login</a> to view your profile.</p>';
         }
       };
 
