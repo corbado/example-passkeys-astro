@@ -9,7 +9,6 @@ Please see the full [blog post](https://www.corbado.com/blog/astro-passkeys) to 
 - `src/components/PasskeyList.astro`: Component for displaying the list of passkeys.
 - `src/pages/Login.astro`: Page component for the sign-up / login screen.
 - `src/pages/Profile.astro`: Page component for the user profile information shown after successful authentication.
-- `corbadoSetup.js`: JavaScript file that contains the shared logic for initializing Corbado.
 
 ## Setup
 

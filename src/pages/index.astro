@@ -1,5 +1,5 @@
 ---
-
+const projectId = import.meta.env.PUBLIC_CORBADO_PROJECT_ID;
 ---
 
 <html>
@@ -37,8 +37,12 @@
     <div class="container">
       <div id="corbado-auth"></div>
     </div>
-    <script type="module">
-      import { loadCorbadoProject } from "./corbadoSetup.js";
+    <script type="module" define:vars={{ projectId }}>
+      const loadCorbadoProject = async () => {
+        await Corbado.load({
+          projectId: projectId,
+        });
+      };
 
       const initializeCorbado = async () => {
         await loadCorbadoProject();
