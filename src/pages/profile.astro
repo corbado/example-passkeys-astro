@@ -60,11 +60,11 @@ const projectId = import.meta.env.PUBLIC_CORBADO_PROJECT_ID;
           logoutButton.style.display = "block";
           logoutButton.addEventListener("click", () => {
             Corbado.logout();
-            window.location.href = "/";
+            window.location.href = "/#login-init";
           });
         } else {
           profileContent.innerHTML =
-            '<p>Please <a href="/">login</a> to view your profile.</p>';
+            '<p>Please <a href="/#login-init">login</a> to view your profile.</p>';
         }
       };
 
