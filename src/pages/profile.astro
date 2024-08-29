@@ -1,6 +1,8 @@
 ---
 import PasskeyList from "../components/PasskeyList.astro";
-const projectId = import.meta.env.PUBLIC_CORBADO_PROJECT_ID;
+const projectId = import.meta.env.DEV
+  ? import.meta.env.PUBLIC_CORBADO_PROJECT_ID_DEV
+  : import.meta.env.PUBLIC_CORBADO_PROJECT_ID_PROD;
 ---
 
 <html>
